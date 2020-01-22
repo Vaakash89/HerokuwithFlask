@@ -29,31 +29,8 @@ def model_predict():
 	if request.method == 'GET':
 		return 'Hello World!'
 	if request.method == 'POST':
-		model = joblib.load('model.pkl')
-		jsonObject = json.loads(request.data.decode('utf-8'))
-		data = jsonObject['data']
-		pred_class = model.predict(data)
-		return str(pred_class)
-		
-'''	if request.method == 'GET':
-		name = request.args.get("name")
-		return 'Hello ' + name
-	if request.method == 'POST':
-		model = joblib.load('model.pkl')
-
-		print("*******************")
-
-		jsonObject = json.loads(request.data.decode('utf-8'))
-		print(jsonObject)
-		print("$$$$$$$$$")
-		print(type(jsonObject))
-		ndarray = jsonObject['data']
-		print("@@@@@@@@@@@@@@@")
-		print(ndarray)
-		s = model.predict(ndarray)
-		return str(s)	
-'''		
+		return 'Hi World!'
 		
 if __name__ == '__main__':
     # Run the app, listening on all IPs with our chosen port number
-    app.run(host='127.0.0.1', port=port)
+    app.run(debug=True)
