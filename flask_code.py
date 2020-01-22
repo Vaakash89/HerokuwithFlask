@@ -27,7 +27,11 @@ def model_predict():
 	if request.method == 'GET':
 		return 'Hello World!'
 	if request.method == 'POST':
-		return 'Hi World!'
+		model = joblib.load('model.pkl')
+		jsonObject = json.loads(request.data.decode('utf-8'))
+		data = jsonObject['data']
+		pred_class = model.predict(data)
+		return str(pred_class)
 		
 if __name__ == '__main__':
     # Run the app, listening on all IPs with our chosen port number
